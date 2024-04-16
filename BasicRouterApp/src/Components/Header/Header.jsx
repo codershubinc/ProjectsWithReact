@@ -8,7 +8,7 @@ function Header() {
                 <h2 className='text-3xl'>Basic Router</h2>
             </div>
             <div>
-                <h1> </h1>
+                <h1> hi </h1>
             </div>
         </div>
     )
