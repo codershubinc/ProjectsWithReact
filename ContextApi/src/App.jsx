@@ -1,15 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState } from 'react' 
+import  UserContextProvider  from './Context/UserContextProvider'
 import './App.css'
+import Login from './Components/Login'
+import Profile from './Components/Profile'
 
-function App() {
-  const [count, setCount] = useState(0)
+function App() { 
 
   return (
-    <>
-    <h1 className='text-5xl text-gray-400  font-bold text-center' >Hi lets start</h1>
-    </>
+    <UserContextProvider>
+      <div className="App">
+        <h1>Context API</h1>
+       <Login/>
+     <Profile/>
+      </div>
+    </UserContextProvider>
   )
 }
 
