@@ -6,20 +6,23 @@ function Github() {
     const {iid} = useParams(); 
     // There is another method to call api in react optimized way
     const [data, setData] = useState([])
-    useEffect(() => {
-        fetch('https://api.github.com/users/'+ (iid ? iid : 'CodersHub-in') )
-            .then(response => response.json())
-            .then(data => {
-
-                setData(data)
-            })
-    })
+        useEffect(() => {
+            // Execute the API call only on initial page load
+            if (iid) {
+                fetch(`https://api.github.com/users/${iid}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        setData(data);
+                    });
+            }
+        }, []);
+   
     return (
-        <div className="h-[60vh] flex w-[90%]  justify-start border-2 border-solid border-stone-800 rounded-3xl m-auto   shadow-2xl" > 
-        <img className="w-[200px] h-[200px] rounded-full  m-auto  "  src={data.avatar_url} alt="" />
+        <div className=" min-h-[70vh]  h-max flex w-[90%] flex-wrap border-2 border-solid border-stone-800 transition-all rounded-3xl m-auto   shadow-inner shadow-slate-500 "> 
+        <img className="w-[200px] h-[200px] rounded-full  m-auto  "  src={(data.avatar_url ? data.avatar_url : "https://cdn-icons-png.flaticon.com/512/1051/1051326.png")} alt="" />
             <div className="text-3xl flex flex-col m-auto">
-                <p>Github name: {data.login}</p>
-               <p>Github followers: {data.followers}</p> 
+                <p>Github name: {(data.login ? data.login : "Not Available")}</p>
+               <p>Github followers: {(data.followers ? data.followers : "Not Available")}</p> 
             </div>
         </div>
     );
