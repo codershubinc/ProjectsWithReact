@@ -1,5 +1,5 @@
 import {  createContext ,useContext } from "react";
-export const ToDoContext = createContext({
+export const TodoContext = createContext({
 
 todos:[
     {
@@ -9,16 +9,16 @@ todos:[
     }
 ],
 
-addTodo: () => {},
-updateTodo: () => {},
-deleteTodo: () => {},
-toggleComplete: () => {},
+addTodos: (todo) => {},
+updateTodo: (id , todo) => {},
+deleteTodo: (id) => {},
+toggleComplete: (id) => {},
 
 
 });
 
-export const useToDoContext = () => {
-    return useContext(ToDoContext);
+export const useTodo = () => {
+    return useContext(TodoContext);
 }
 
-export const TodoProvider = ToDoContext.Provider                    
+export const TodoProvider = TodoContext.Provider                    
