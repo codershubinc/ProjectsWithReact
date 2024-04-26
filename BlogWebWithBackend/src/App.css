@@ -30,6 +30,9 @@
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
+    transform: translateY(300px);
+    opacity: 0;
+    transition: transform 300ms, opacity 300ms;
   }
 }
 
