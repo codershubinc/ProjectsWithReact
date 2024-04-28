@@ -32,6 +32,7 @@ export class AuthService {
         try {
             return await this.account.createEmailSession(email, password);
         } catch (error) {
+            console.log("Login error");
             throw error;
         }
     }
@@ -59,5 +60,3 @@ export class AuthService {
 const authService = new AuthService();
 
 export default authService
-
-

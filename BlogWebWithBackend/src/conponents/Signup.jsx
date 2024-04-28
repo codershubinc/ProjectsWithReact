@@ -6,7 +6,7 @@ import { Button, Input, Logo } from './index.js'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 
-function Signup() {
+export default  function Signup() {
     const navigate = useNavigate()
     const [error, setError] = useState("")
     const dispatch = useDispatch()
@@ -20,9 +20,11 @@ function Signup() {
                 const userData = await authService.getCurrentUser()
                 if (userData) dispatch(login(userData));
                 navigate("/")
+                console.log("signup clicked");
             }
         } catch (error) {
             setError(error.message)
+            console.log("signup clicked | error");
         }
     }
     return (
@@ -85,4 +87,4 @@ function Signup() {
     )
 }
 
-export default Signup
+
