@@ -3,8 +3,17 @@ import { Container, Logo, LogoutBtn } from '../index'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import appwriteService from '../../appwrite/auth'
 
 function Header() {
+  async function getIdentity() {
+    console.log("getIdentity");
+    await appwriteService.identityList()
+      .then((response) => {
+
+        console.log(response);
+      })
+  }
   const authStatus = useSelector((state) => state.auth.status)
   const navigate = useNavigate()
 
@@ -66,6 +75,7 @@ function Header() {
           </ul>
         </nav>
       </Container>
+      <button onClick={getIdentity} >identity</button>
     </header>
   )
 }
