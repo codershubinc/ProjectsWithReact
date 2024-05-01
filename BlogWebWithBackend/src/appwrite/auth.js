@@ -56,17 +56,7 @@ export class AuthService {
             console.log("Appwrite serive :: logout :: error", error);
         }
     }
-    async identityList() {
 
-        await this.account.createDocument(
-            conf.appwriteDatabaseId,
-            conf.appwriteCollectionId,
-            ID.unique(),
-            {
-                name: "test"
-            }
-        )
-    }
 }
 
 const authService = new AuthService();
